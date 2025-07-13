@@ -5,6 +5,7 @@
 package com.apiweb.aresfitnes.Controller;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import java.net.http.HttpResponse.BodyHandlers;
  *
  * @author ASPIRE 5 CI7 10MA
  */
+@WebServlet("/EjerciciosServlet1")
 public class EjerciciosServlet1 extends HttpServlet {
 
     /**
