@@ -8,6 +8,7 @@ import com.apiweb.aresfitnes.Model.Ejercicio;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,6 +22,7 @@ import java.util.List;
  *
  * @author ASPIRE 5 CI7 10MA
  */
+@WebServlet("/EjerciciosServlet")
 public class EjerciciosServlet extends HttpServlet {
 
     /**

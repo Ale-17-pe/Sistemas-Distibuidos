@@ -34,7 +34,10 @@
                     <li><a href=mutar.jsp >PLANES</a></li>
                     <li><a href=ubicacion.jsp >UBICACIÓN</a></li>
                     <li><a href=EjerciciosServlet >EJERCICIOS</a></li>
-                    <li><a href=EjerciciosServlet1 >mostrar</a></li>
+                    <li><a href=EjerciciosServlet1 >MOSTRAR</a></li>
+                    <li><a href=suple.jsp >SUPLEMENTOS</a></li>
+                    <li><a href=ropa.jsp >ROPA</a></li>
+
                     <li><a href=planes2.jsp >MENBRESIAS</a></li>
                         <% if (usuario != null) { %>
 
