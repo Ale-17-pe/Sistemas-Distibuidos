@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page session="true" %>
+<%@ page session="true" %>
 <%
     com.apiweb.aresfitnes.Model.Usuario usuario = (com.apiweb.aresfitnes.Model.Usuario) session.getAttribute("usuarioLogeado");
     com.apiweb.aresfitnes.dto.ClienteDTO clientedto = (com.apiweb.aresfitnes.dto.ClienteDTO) session.getAttribute("clientedto");
@@ -15,13 +15,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AresFitness</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/Css/index.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/Css/HyF.css">
-        <link rel="icon" href="${pageContext.request.contextPath}/Imagenes/logo.png" type="image/png">
+        <title>AresFitness</title>  
+        <link rel="stylesheet" href="Css/index.css">
+        <link rel="stylesheet" href="Css/HyF.css">
+        <link rel="icon" href="Imagenes/logo.png" type="image/png">
         <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     </head>
-
     <body>
         <header>
             <div class="logo-container">
@@ -33,48 +32,49 @@
                 <ul> 
                     <li><a href=mutar.jsp >PLANES</a></li>
                     <li><a href=ubicacion.jsp >UBICACIÓN</a></li>
-                    <li><a href=EjerciciosServlet >EJERCICIOS</a></li>
-                    <li><a href=EjerciciosServlet1 >MOSTRAR</a></li>
+                    <% if (usuario != null) { %>
+                        <li><a href=EjerciciosServlet >EJERCICIOS</a></li>
+                        <li><a href=EjerciciosServlet1 >MOSTRAR</a></li>
+                        <li><a href=planes2.jsp >MENBRESIAS</a></li>
+                    <% } %>
                     <li><a href=suple.jsp >SUPLEMENTOS</a></li>
                     <li><a href=ropa.jsp >ROPA</a></li>
 
-                    <li><a href=planes2.jsp >MENBRESIAS</a></li>
-                        <% if (usuario != null) { %>
+                    <% if (usuario != null) { %>
+                        <%
+                            String tipo = usuario.getTipo_usuario();
+                            if ("cliente".equals(tipo)) {
+                        %>
+                        <li><a href="portalCliente.jsp">MI PORTAL</a></li>
+                            <% } else if ("recepcionista".equals(tipo)) { %>
+                        <li><a href="portalRecepcionista.jsp">MI PORTAL</a></li>
+                            <% } else if ("administrador".equals(tipo)) { %>
+                        <li><a href="portalAdmin.jsp">MI PORTAL</a></li>
+                            <% } %>
 
-                    <%
-                        String tipo = usuario.getTipoUsuario();
-                        if ("cliente".equals(tipo)) {
-                    %>
-                    <li><a href="portalCliente.jsp">MI PORTAL</a></li>
-                        <% } else if ("recepcionista".equals(tipo)) { %>
-                    <li><a href="portalRecepcionista.jsp">MI PORTAL</a></li>
-                        <% } else if ("administrador".equals(tipo)) { %>
-                    <li><a href="portalAdmin.jsp">MI PORTAL</a></li>
-                        <% } %>
-
-                    <a href="${pageContext.request.contextPath}/LogoutServlet"><button class="login-btn" id="logoutButton">
-                            <div class="login-btn__icon">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Icono de logout/cerrar sesión -->
-                                <path d="M10 4h6v2h-6v3h-2V6H4v12h4v-3h2v3h6v2h-6v-5h-2v5H2V4h8v5h2V4Z" fill="currentColor"/>
-                                <path d="m18 12-5-5v3H9v4h4v3l5-5Z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                            <div class="login-btn__text">Salir</div>
-                        </button></a>
+                        <a href="${pageContext.request.contextPath}/LogoutServlet"><button class="login-btn" id="logoutButton">
+                                <div class="login-btn__icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Icono de logout/cerrar sesión -->
+                                    <path d="M10 4h6v2h-6v3h-2V6H4v12h4v-3h2v3h6v2h-6v-5h-2v5H2V4h8v5h2V4Z" fill="currentColor"/>
+                                    <path d="m18 12-5-5v3H9v4h4v3l5-5Z" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                                <div class="login-btn__text">Salir</div>
+                            </button></a>
 
                     <% } else { %>
-                    <a href="login.jsp"><button class="login-btn" id="loginButton">
-                            <div class="login-btn__icon">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <!-- Icono de usuario/login -->
-                                <path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/>
-                                </svg>
-                            </div>
-                            <div class="login-btn__text">Entrar</div>
-                        </button></a>  
-                        <% }%>
-                    <a href="carrito.jsp    " class="cart-btn-link">
+                        <a href="login.jsp"><button class="login-btn" id="loginButton">
+                                <div class="login-btn__icon">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Icono de usuario/login -->
+                                    <path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4z"/>
+                                    </svg>
+                                </div>
+                                <div class="login-btn__text">Entrar</div>
+                            </button></a>  
+                    <% }%>
+                    <a href="carrito.jsp" class="cart-btn-link">
                         <button class="cart-btn" id="cartButton">
                             <div class="cart-btn__icon">
                                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -87,38 +87,8 @@
             </nav>
         </header>
 
-        <section>
-            <section class="video-background-section">
-                <video autoplay muted loop playsinline class="video-background">
-                    <source src="Imagenes/video-fondo.mp4" type="video/mp4">
-                    <!-- Fallback para navegadores que no soportan video -->
-                    <img src="Imagenes/cbum.gif" alt="Fondo Ares Fitness">
-                </video>
-                <div class="parallax-content">
-                    <h1>ARES FITNESS</h1>
-                    <h2>Transforma tu cuerpo, transforma tu vida</h2>
-                    <p>GRADO PROFESIONAL EN FITNESS Y NUTRICIÓN</p>
-                </div>
-            </section>
-            <div class="top-promo-bar">
-                <div class="promo-scroll-container">
-                    <!-- Contenido original -->
-                    <a href="#"><img src="Imagenes/EL Cambio.png" alt="Oferta proteínas"></a>
-                    <a href="#"><img src="Imagenes/Ropa baner.png" alt="Kit entrenamiento"></a>
-                    <a href="#"><img src="Imagenes/4.png" alt="Bebida energética"></a>
-                    <a href="#"><img src="Imagenes/3.png" alt="Accesorios gym"></a>
-                    <a href="#"><img src="Imagenes/5.png" alt="Oferta membresía"></a>
-                    <a href="#"><img src="Imagenes/6.png" alt="Clases especiales"></a>
 
-                    <!-- Contenido duplicado (mismo orden) -->
-                    <a href="#"><img src="Imagenes/EL Cambio.png" alt="Oferta proteínas"></a>
-                    <a href="#"><img src="Imagenes/Ropa baner.png" alt="Kit entrenamiento"></a>
-                    <a href="#"><img src="Imagenes/4.png" alt="Bebida energética"></a>
-                    <a href="#"><img src="Imagenes/3.png" alt="Accesorios gym"></a>
-                    <a href="#"><img src="Imagenes/5.png" alt="Oferta membresía"></a>
-                    <a href="#"><img src="Imagenes/6.png" alt="Clases especiales"></a>
-                </div>
-            </div>
+        <section>
             <!-- Img-1 -->
             <div class="Img-1">
                 <img src="Imagenes/Gym-1.png" alt="Gimnasio vista frontal">

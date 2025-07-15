@@ -5,7 +5,7 @@
 package com.apiweb.aresfitnes.dao;
 
 import com.apiweb.aresfitnes.Model.Matricula;
-import com.apiweb.aresfitnes.utils.ConectaBD;
+import com.apiweb.aresfitnes.Utils.ConectaBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

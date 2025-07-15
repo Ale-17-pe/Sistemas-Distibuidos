@@ -1,4 +1,4 @@
-package com.apiweb.aresfitnes.utils;
+package com.apiweb.aresfitnes.Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -5,9 +5,7 @@
 package com.apiweb.aresfitnes.dao;
 
 import com.apiweb.aresfitnes.Model.Cliente;
-import com.apiweb.aresfitnes.Model.Usuario;
-import com.apiweb.aresfitnes.dto.ClienteDTO;
-import com.apiweb.aresfitnes.utils.ConectaBD;
+import com.apiweb.aresfitnes.Utils.ConectaBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

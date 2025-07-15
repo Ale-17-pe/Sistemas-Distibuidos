@@ -1,7 +1,8 @@
 package com.apiweb.aresfitnes.Controller;
-import com.apiweb.aresfitnes.Model.Cliente;
+import com.apiweb.aresfitnes.dto.ClienteDTO;
 import com.apiweb.aresfitnes.Model.Usuario;
 import com.apiweb.aresfitnes.Service.ClienteService;
+import com.apiweb.aresfitnes.Model.Cliente;
 import com.apiweb.aresfitnes.dao.UsuarioDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
